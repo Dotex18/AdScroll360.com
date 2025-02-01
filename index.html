@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdScroll360 - Coming Soon</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #222;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            transition: background 1s ease-in-out;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .loader {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            border-top: 6px solid #fff;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 50%;
+            background: #4caf50;
+            transition: width 2s;
+            animation: loadingLoop 3s infinite alternate;
+        }
+        .logo {
+            width: 350px;
+            height: 20vh;
+            margin: 20px auto;
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        @keyframes loadingLoop {
+            0% { width: 50%; }
+            100% { width: 60%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <h1 class="fade-in" id="comingText">Coming Soon</h1>
+    <p class="fade-in" id="comingDesc">We're working hard to bring you something amazing. Stay tuned!</p>
+    
+    <div id="modal" class="modal">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h2>Loading 50% Complete...</h2>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('comingText').classList.add('hidden');
+                document.getElementById('comingDesc').classList.add('hidden');
+                document.querySelector('.loader').classList.add('hidden');
+                document.getElementById('modal').style.display = 'block';
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
